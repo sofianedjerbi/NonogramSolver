@@ -3,9 +3,6 @@
  | Chaque case fait 8*8 pixels.
  | La taille de la fenêtre dépend de la taille du nonogram.
  | Un pixel pour séparer chaque case
- |
- |
- |
 """
 import pygame
 
@@ -66,6 +63,8 @@ if __name__ == "__main__": # DEBUG!
     graphics.draw_grid()
     for i in range(10):
         graphics.color_box(i, i)
+    for i in range(11+5, 21):
+        graphics.color_box(i, i, (240, 100, 100))
     while True:
         for event in pygame.event.get(): # Gerer les events
             if event.type == pygame.QUIT:
