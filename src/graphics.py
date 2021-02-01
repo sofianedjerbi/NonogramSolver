@@ -1,6 +1,6 @@
 # Graphics.py - Sofiane DJERBI
 """ CONVENTIONS
- | Chaque case fait 8*8 pixels.
+ | Chaque case fait 10*10 pixels.
  | La taille de la fenêtre dépend de la taille du nonogram.
  | Un pixel pour séparer chaque case
 """
