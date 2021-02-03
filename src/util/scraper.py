@@ -1,7 +1,7 @@
 # scraper.py - Sofiane DJERBI
 """ CONVENTIONS
  | On utilisera exclusivement le site nonograms.org.
-"""
+""" # Cette partie est un peu "hardcodée"...
 from nonogram import Nonogram
 from requests_html import HTMLSession
 
@@ -39,18 +39,23 @@ class Scraper:
         size = (int(size[0]), int(size[1]))
         x = size[0] # Taille en x, y
         y = size[1]
-        col = r.html.xpath('//*[@class="nmtt"]/table/tbody//tr//td//div/text()')
-        col = [0 if e == '\xa0' else int(e) for e in col]
-        col = [col[i*x:i*x+x] for i in range(len(col)//x)] # Numpy.reshape equivalent..
+        rcol = r.html.xpath('//*[@class="nmtt"]/table/tbody//tr//td//div/text()')
+        rcol = [0 if e == '\xa0' else int(e) for e in rcol]
+        print(rcol)
+        col = []
+        for i in range(x):
+             col.append([rcol[e+i] for e in range(0, len(rcol), x)]) # Un peu compliqué mais on prend tous les elements dont l'index est i modulo len/x
         row = r.html.xpath('//*[@class="nmtl"]/table/tbody//tr//td//div/text()')
         row = [0 if e == '\xa0' else int(e) for e in row]
-        row = [row[i*y:i*y+y] for i in range(len(row)//y)]
+        print(row)
+        row = [row[i:i+len(row)//y] for i in range(0, len(row), len(row)//y)] # Split les lignes
         print(f"Nonogram {name} sucessfully scrapped.")
         return Nonogram(size, row, col, name, colors)
 
 if __name__ == "__main__":
     scraper = Scraper()
-    nonogram = scraper.get("https://www.nonograms.org/nonograms/i/40285")
+    url = input("Url : ")
+    nonogram = scraper.get(url)
     print(nonogram.x, nonogram.y)
     print(nonogram.col)
     print(nonogram.row)

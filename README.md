@@ -9,7 +9,7 @@ Par Sofiane DJERBI &amp; Salem HAFTARI
 ## Resources
 - Librairie graphique `pygame`.
 - Librairie de serialisation `pickle`.
-- Librairie de requêtes html `requests-html`, facultative [(1)][(1)].
+- Librairie de requêtes html `requests-html`, facultative (1).
 ## TODO
 - Faire un outil permettant de convertir un nonogramme en données exploitables
 - Modéliser un nonogramme en logique
