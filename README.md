@@ -8,9 +8,13 @@ Par Sofiane DJERBI &amp; Salem HAFTARI
 - Les conventions plus précises (par exemple, les conventions grapiques) sont dans le code source, au début de chaque fichier, en commentaire si besoin.
 ## Resources
 - Librairie graphique `pygame`.
+- Librairie de serialisation `pickle`.
+- Librairie de requêtes html `requests-html`, facultative [(1)][(1)].
 ## TODO
-- Faire un outil permettant de convertir un nonogram en données exploitables
-- Modéliser un Nonogram en logique
+- Faire un outil permettant de convertir un nonogramme en données exploitables
+- Modéliser un nonogramme en logique
 - Implémenter un solveur SAT
 - Implémenter NOTRE solveur SAT (Facultatif)
 - Ajouter des couleurs (Facultatif)
+## Infos supplémentaires
+(1) : On ne va pas obliger le correcteur à installer cette librairie trop lourde pour une fonctionnalité qui n'est pas censée être dans le projet. C'est pourquoi on proposera des nonogrammes déjà "téléchargés" sous forme de fichiers. Cependant, soyez libre d'installer requests-html et le driver chromium pour utiliser notre scraper.
