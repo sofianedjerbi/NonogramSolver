@@ -41,21 +41,23 @@ class Scraper:
         y = size[1]
         rcol = r.html.xpath('//*[@class="nmtt"]/table/tbody//tr//td//div/text()')
         rcol = [0 if e == '\xa0' else int(e) for e in rcol]
-        print(rcol)
         col = []
         for i in range(x):
              col.append([rcol[e+i] for e in range(0, len(rcol), x)]) # Un peu compliqué mais on prend tous les elements dont l'index est i modulo len/x
         row = r.html.xpath('//*[@class="nmtl"]/table/tbody//tr//td//div/text()')
         row = [0 if e == '\xa0' else int(e) for e in row]
-        print(row)
         row = [row[i:i+len(row)//y] for i in range(0, len(row), len(row)//y)] # Split les lignes
         print(f"Nonogram {name} sucessfully scrapped.")
         return Nonogram(size, row, col, name, colors)
+
 
 if __name__ == "__main__":
     scraper = Scraper()
     url = input("Url : ")
     nonogram = scraper.get(url)
+    nonogram.save("../resources/nonograms/")
+    nonogram = Nonogram()
+    nonogram.load("../resources/nonograms/bee.nng")
     print(nonogram.x, nonogram.y)
     print(nonogram.col)
     print(nonogram.row)

@@ -1,2 +1,4 @@
 pygame
-#requests-html
+pickle # Normalement déjà installé
+pathlib # Normalement déjà installé
+#requests-html # Décommenter pour utiliser scraper.py
