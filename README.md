@@ -11,7 +11,8 @@ Par Sofiane DJERBI &amp; Salem HAFTARI
 - Librairie de serialisation `pickle`.
 - Librairie de requêtes html `requests-html`, facultative (1).
 ## TODO
-- Faire un outil permettant de convertir un nonogramme en données exploitables
+- ~~Faire une librairie graphique~~ Fait
+- ~~Faire un outil permettant de convertir un nonogramme en données exploitables~~ Fait
 - Modéliser un nonogramme en logique
 - Implémenter un solveur SAT
 - Implémenter NOTRE solveur SAT (Facultatif)
