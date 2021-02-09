@@ -13,6 +13,7 @@ Par Sofiane DJERBI &amp; Salem HAFTARI
 ## TODO
 - ~~Faire une librairie graphique~~ Fait
 - ~~Faire un outil permettant de convertir un nonogramme en données exploitables~~ Fait
+- ~~Création d'une librairie de conversion FND vers FNC~~
 - Modéliser un nonogramme en logique
 - Implémenter un solveur SAT
 - Implémenter NOTRE solveur SAT (Facultatif)

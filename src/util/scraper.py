@@ -17,7 +17,7 @@ class Scraper:
         self.session = HTMLSession() # Notre "navigateur virtuel"
 
     def get(self, url, colors=False):
-        """ CONVERTION
+        """ CONVERSION
         Convertis un nonogramme de nonograms.org en objet Nonogram
         Variables :
             - url : Url du nonogram sur nonograms.org
@@ -28,7 +28,7 @@ class Scraper:
             raise ValueError("Wrong URL, please use nonograms.org.")
         r = self.session.get(url) # On récupère le code source
         if r.status_code != 200:
-            raise Exception(f"Cannot GET Nonogram URL, error: {r.status_code}")
+            raise Exception(f"Cannot GET Nonogram, error: {r.status_code}")
         name = r.html.find('title')[0].text[36:-1] # Titre du nonogramme
         # Attention: La ligne suivante télécharge le driver chromium ~ 109 MO...
         r.html.render() # On execute le javascript dans un navigateur chromium
@@ -51,13 +51,13 @@ class Scraper:
         return Nonogram(size, row, col, name, colors)
 
 
-if __name__ == "__main__":
+if __name__ == "__main__": # Debug !
     scraper = Scraper()
     url = input("Url : ")
     nonogram = scraper.get(url)
-    nonogram.save("../resources/nonograms/")
-    nonogram = Nonogram()
-    nonogram.load("../resources/nonograms/bee.nng")
-    print(nonogram.x, nonogram.y)
-    print(nonogram.col)
-    print(nonogram.row)
+    #nonogram.save("../resources/nonograms/")
+    #nonogram = Nonogram()
+    #nonogram.load("../resources/nonograms/bee.nng")
+    #print(nonogram.x, nonogram.y)
+    #print(nonogram.col)
+    #print(nonogram.row)
