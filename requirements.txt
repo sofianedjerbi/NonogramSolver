@@ -1,4 +1,8 @@
+# Obligatoire, mais non installé par défaut
 pygame
-pickle # Normalement déjà installé
-pathlib # Normalement déjà installé
+numba
 #requests-html # Décommenter pour utiliser scraper.py
+
+# Normalement déjà installé
+pickle
+pathlib

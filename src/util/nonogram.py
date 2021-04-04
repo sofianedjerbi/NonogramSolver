@@ -1,4 +1,4 @@
-# nonogram.py - Sofiane DJERBI
+# nonogram.py - Sofiane DJERBI & Salem HAFTARI
 """ CONVENTIONS
  | Les nonogram donnent les informations en partant du haut et de la gauche.
  | row[x], col[y] donne les données de la case en position x,y (Coordonnées matricielles)
