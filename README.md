@@ -16,7 +16,7 @@ Par Sofiane DJERBI &amp; Salem HAFTARI
 - ~~Faire un outil permettant de convertir un nonogramme en données exploitables~~ Fait
 - ~~Création d'une librairie de conversion FND vers FNC~~ Fait
 - Modéliser un nonogramme en logique : EN COURS
-- Implémenter un solveur SAT
+- ~~Implémenter un solveur SAT~~
 - Implémenter NOTRE solveur SAT (Facultatif)
 - Ajouter des couleurs (Facultatif)
 ## Infos supplémentaires

@@ -1,6 +1,7 @@
 # scraper.py - Sofiane DJERBI
 """ CONVENTIONS
  | On utilisera exclusivement le site nonograms.org.
+ | Le code ci-dessous est hardcodé et uniquement compatible avec nonograms.org
 """ # Cette partie est un peu "hardcodée"...
 from nonogram import Nonogram
 from requests_html import HTMLSession
@@ -8,8 +9,8 @@ from requests_html import HTMLSession
 class Scraper:
     """ SCRAPPER (NONOGRAMS.ORG)
     Récupère des nonogrammes en ligne et les transforme en objet Nonogram
-    Variables :
-        - session : Navigateur chromium de requests-html
+    Variables:
+        - session: Navigateur chromium de requests-html
     """
     def __init__(self):
         """ INITIALISATION
@@ -19,9 +20,11 @@ class Scraper:
     def get(self, url, colors=False):
         """ CONVERSION
         Convertis un nonogramme de nonograms.org en objet Nonogram
-        Variables :
-            - url : Url du nonogram sur nonograms.org
-            - colors : Récuperer les couleurs ? (bool)
+        Variables:
+            - url: Url du nonogram sur nonograms.org
+            - colors: Récuperer les couleurs ? (bool)
+        Retourne:
+            - Un objet Nonogram
         """
         print("Scraping Nonogram...")
         if not "nonograms.org" in url.lower():
@@ -53,11 +56,11 @@ class Scraper:
 
 if __name__ == "__main__": # Debug !
     scraper = Scraper()
-    url = input("Url : ")
+    url = input("Url: ")
     nonogram = scraper.get(url)
-    #nonogram.save("../resources/nonograms/")
-    #nonogram = Nonogram()
-    #nonogram.load("../resources/nonograms/bee.nng")
-    #print(nonogram.x, nonogram.y)
-    #print(nonogram.col)
-    #print(nonogram.row)
+    nonogram.save("../resources/nonograms/")
+    nonogram = Nonogram()
+    nonogram.load("../resources/nonograms/bee.nng")
+    print(nonogram.x, nonogram.y)
+    print(nonogram.col)
+    print(nonogram.row)
