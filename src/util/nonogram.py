@@ -4,8 +4,8 @@
  | row[x], col[y] : infos de la case en position x,y (Coordonnées matricielles)
 """
 import pickle
-from graphics import 
-from pathlib import Path
+from logic import NNGFormula
+from graphics import Graphics
 
 class Nonogram:
     """ NONOGRAMME
@@ -16,10 +16,10 @@ class Nonogram:
         - row: Informations des lignes du nonogramme
         - col: Informations des colonnes du nonogramme
         - colors: Le nonogramme est-il en couleur ? (Booléen)
-
+        - formula: Formule logique correspondant au booléen (FND/FNC)
     """
     def __init__(self, size=(0,0), row=[], col=[],
-                 name="", colors=False, formula=None):
+                 name="", colors=False, formula=NNGFormula()):
         """ INITIALISATION
         Paramètres:
             - size: Taile du nonogramme
@@ -27,6 +27,7 @@ class Nonogram:
             - row: Informations des lignes du nonogramme
             - col: Informations des colonnes du nonogramme
             - colors: Le nonogramme est-il en couleur (Booléen)
+            - formula: Formule logique associée au nonogramme
         """
         self.x, self.y = size
         self.name = name
@@ -75,10 +76,12 @@ class Nonogram:
         self.formula = d["formula"]
         print(f"NNG {self.name} sucessfully loaded.")
 
-    def solve(self):
-        """ RESOUDRE LE NONOGRAMME """
-        pass
-
-    def show(self):
-        """ AFFICHER LE NONOGRAMME """
-        pass
+    def solve(self, engine):
+        """ RESOUDRE UN NONOGRAMME
+        Paramètres:
+            - engine: Classe Algorithme/Solveur SAT (Classe et non objet!)
+        Retourne:
+            - None si le nonogramme n'admet pas de modèle
+            - Une liste si le nonogramme admet un modèle
+        """
+        return self.formula.solve(engine)

@@ -59,7 +59,6 @@ class Graphics:
         pygame.draw.rect(self.screen, color, rect) # Dessinons l'objet sur la surface principale
 
 
-
 if __name__ == "__main__": # DEBUG!
     graphics = Graphics("Nonogram Solver", 64, 32)
     graphics.draw_grid()
