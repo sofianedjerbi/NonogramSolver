@@ -3,7 +3,7 @@
  | On utilisera exclusivement le site nonograms.org.
  | Le code ci-dessous est hardcodé et uniquement compatible avec nonograms.org
 """ # Cette partie est un peu "hardcodée"...
-from nonogram import Nonogram
+from util.nonogram import Nonogram
 from requests_html import HTMLSession
 
 class Scraper:

@@ -6,7 +6,6 @@
  | qu'utiliser *args. Même si cela ne rend pas très "simple" en exemple.
 """
 import pickle
-from pysat.solvers import Glucose4
 from itertools import product
 
 
@@ -51,6 +50,7 @@ class NNGFormula:
 
 
 if __name__ == "__main__": # DEBUG !
+    from pysat.solvers import Glucose4
     a = NNGFormula([[1,2,3,10], [4,5], [6,7,8]])
     #print(a) # FND
     #a._linearize() # FND -> FNC

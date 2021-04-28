@@ -4,8 +4,8 @@
  | row[x], col[y] : infos de la case en position x,y (Coordonnées matricielles)
 """
 import pickle
-from logic import NNGFormula
-from graphics import Graphics
+from util.logic import NNGFormula
+from util.graphics import Graphics
 
 class Nonogram:
     """ NONOGRAMME
