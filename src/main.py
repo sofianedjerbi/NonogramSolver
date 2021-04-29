@@ -27,7 +27,7 @@ LOGO = """
   ╚════╝    ╚════██║██║   ██║██║    ╚██╗ ██╔╝██╔══╝  ██╔══██╗    ╚════╝
             ███████║╚██████╔╝███████╗╚████╔╝ ███████╗██║  ██║
             ╚══════╝ ╚═════╝ ╚══════╝ ╚═══╝  ╚══════╝╚═╝  ╚═╝
-                   Sofiane DJERBI & Salem HAFTARI
+                    Sofiane DJERBI & Salem HAFTARI
 """
 
 
@@ -37,9 +37,9 @@ def choice(max):
         - max: Numéro max du choix
     Renvoie le choix du joueur
     """
-    num = input("Votre choix: ")
+    num = input("Your choice: ")
     if not num.isnumeric() or int(num) > max: # Si le choix est invalide
-        print("Choix incorrect.")
+        print("Incorrect choice.")
         return choice(max) # Pour éviter un faux do..while
     return int(num)
 
@@ -47,7 +47,7 @@ def solve(nonogram):
     pass
 
 
-class MenuManager():
+class Menu():
     def main(self):
         print("\n\n")
         print("""- MAIN MENU -
@@ -56,9 +56,12 @@ class MenuManager():
         2) Solve nonogram online (requests-html needed)
         3) Exit
         """)
-        next = [self.nonogram, self.download, None] # Index = Choix du joueur
+        next = [self.nonogram, self.download, self.stop] # Index = Choix du joueur
         c = choice(3)
         return next[c-1]()
+
+    def stop(self):
+        return
 
     def download(self):
         print("\n\n")
@@ -68,7 +71,7 @@ class MenuManager():
             scraper = Scraper()
             try:
                 nonogram = scraper.get(url)
-                
+                nonogram.save("resources/nonograms/")
             except Exception as e:
                 print(e) # On laisse requests_html gerer les erreurs
         else:
@@ -83,10 +86,8 @@ class MenuManager():
         pass
 
 
-
-
 if __name__ == "__main__": # Programme principal
     sat = DEFAULT_SAT
     print(LOGO) # Logo
-    menu = MenuManager()
+    menu = Menu()
     menu.main()
