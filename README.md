@@ -1,6 +1,8 @@
 # Nonogram-Solver
+![alt text](https://github.com/Kugge/Nonogram-Solver/blob/master/preview.png?raw=true)
 Projet Nonogram  
 Par Sofiane DJERBI &amp; Salem HAFTARI
+
 ## Conventions
 - Les commentaires sont en Français, le code en Anglais.
 - Paradigme de la programmation orientée objet.
