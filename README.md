@@ -17,9 +17,9 @@ Par Sofiane DJERBI &amp; Salem HAFTARI
 - ~~Faire une librairie graphique~~ Fait
 - ~~Faire un outil permettant de convertir un nonogramme en données exploitables~~ Fait
 - ~~Création d'une librairie de conversion FND vers FNC~~ Fait
-- Modéliser un nonogramme en logique : EN COURS
-- ~~Implémenter un solveur SAT~~
-- Implémenter NOTRE solveur SAT (Facultatif)
+- ~~Modéliser un nonogramme en logique~~ Fait
+- ~~Implémenter un solveur SAT~~ Fait
+- Implémenter NOTRE solveur SAT: EN COURS
 - Ajouter des couleurs (Facultatif)
 ## Infos supplémentaires
 (1) : On ne va pas obliger le correcteur à installer cette librairie trop lourde pour une fonctionnalité qui n'est pas censée être dans le projet. C'est pourquoi on proposera des nonogrammes déjà "téléchargés" sous forme de fichiers. Cependant, soyez libre d'installer requests-html et le driver chromium pour utiliser notre scraper.
