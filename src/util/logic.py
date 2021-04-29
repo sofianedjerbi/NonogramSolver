@@ -4,6 +4,9 @@
  | a + b + (-cd) := NNGFormula([[1], [2], [-3, 4]])
  | En théorie nous manipulons des listes, c'est donc plus pratique et simple
  | qu'utiliser *args. Même si cela ne rend pas très "simple" en exemple.
+ |
+ | /!\ Cette implémentation n'est pas une implémentation complète de la logique
+ | Nous traitons uniquement des FND / FNC
 """
 import pickle
 from itertools import product
@@ -25,12 +28,26 @@ class NNGFormula:
         """ AFFICHAGE DIMACS """
         return " 0\n".join(" ".join(str(e) for e in x) for x in self.list) + " 0"
 
+    def __add__(self, other):
+        """ COMBINE LES DEUX LISTES DE FNC/FND
+        Paramètres:
+            - other: Objet NNGFormule
+        """
+        return NNGFormula(self.list + other.list)
+
     def _linearize(self):
         """ LINEARISATION
         Distribue tous les termes des listes.
         Permet une conversion FND <-> FNC.
         """
         self.list = list(product(*self.list))
+
+    def append(self, l):
+        """ AJOUTE DES ELEMENTS DANS LA LISTE
+        Paramètres:
+            - l: Sous liste (FND/FNC)
+        """
+        self.list += l
 
     def solve(self, engine):
         """ RESOUDRE UNE FORMULE
