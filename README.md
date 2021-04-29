@@ -1,5 +1,5 @@
 # Nonogram-Solver
-![alt text](https://github.com/Kugge/Nonogram-Solver/blob/master/preview.png?raw=true)
+![alt text](https://github.com/Kugge/Nonogram-Solver/blob/master/preview.png?raw=true)  
 Projet Nonogram  
 Par Sofiane DJERBI &amp; Salem HAFTARI
 
