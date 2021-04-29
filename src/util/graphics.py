@@ -25,7 +25,7 @@ class Graphics:
             - icon: Icone de la fenêtre
         """
         pygame.init() # Initialisation de pygame
-        self.screen = pygame.display.set_mode((x*11-1, y*11-1)) # *11 - 1 = UN pixel entre caque case
+        self.screen = pygame.display.set_mode((x*21-1, y*21-1)) # *21 - 1 = UN pixel entre caque case
         pygame.display.set_caption(title) # Titre
         self.x = x
         self.y = y
@@ -47,7 +47,7 @@ class Graphics:
         """
         for x in range(self.x):
             for y in range(self.y):
-                rect = pygame.Rect((x*11, y*11), (11, 11)) # Objet rectangle pygame
+                rect = pygame.Rect((x*21, y*21), (21, 21)) # Objet rectangle pygame
                 pygame.draw.rect(self.screen, grid_color, rect,  1) # Dessinons l'objet sur la surface principale
 
     def color_box(self, x, y, color=(0,0,0)):
@@ -55,7 +55,7 @@ class Graphics:
         Paramètres:
             - x, y: Position de la case
         """
-        rect = pygame.Rect((x*11, y*11), (11, 11)) # Objet rectangle pygame
+        rect = pygame.Rect((x*21, y*21), (21, 21)) # Objet rectangle pygame
         pygame.draw.rect(self.screen, color, rect) # Dessinons l'objet sur la surface principale
 
 
@@ -63,8 +63,8 @@ if __name__ == "__main__": # DEBUG!
     graphics = Graphics("Nonogram Solver", 64, 32)
     graphics.draw_grid()
     for i in range(10):
-        graphics.color_box(i, i)
-    for i in range(11+5, 21):
+        graphics.color_box(0, 0)
+    for i in range(21+5, 21):
         graphics.color_box(i, i, (240, 100, 100))
     while True:
         for event in pygame.event.get(): # Gerer les events
