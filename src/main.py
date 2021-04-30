@@ -94,9 +94,9 @@ class Menu():
     def solve(self, nng):
         # SAT_LIST = [Glucose4, MinisatGH, Minisat22, Lingeling, Cadical]
         print("\n- CHOOSE ENGINE -")
-        print("1) Glucose4")
-        print("2) MinisatGH")
-        print("3) Minisat22")
+        print("1) Glucose 4")
+        print("2) Minisat (Github Version)")
+        print("3) Minisat 2.2")
         print("4) Lingeling")
         print("5) Cadical")
         c = choice(len(SAT_LIST)+1)
@@ -108,12 +108,7 @@ class Menu():
         t = time.time() - a
         print("DIMACS generated in {:.2f} seconds!".format(t))
 
-        print("\nSolving...")
-        a = time.time()
         vars = nng.solve(engine)
-        t = time.time() - a
-        print("Solved in {:.2f} seconds!".format(t))
-
         self.show(nng, vars)
 
     def show(self, nng, vars):

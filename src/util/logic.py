@@ -10,6 +10,7 @@
 """
 import pickle
 import os
+import time
 import threading
 from itertools import product
 
@@ -52,15 +53,27 @@ class NNGFormula:
         self.file.close() # On ferme le fichier
         file = open(self.name, "rb") # On l'ouvre en mode lecture
         instance = engine() # Une instance de l'engine pour pas le modifier
+        print("\nLoading DIMACS...")
+        a = time.time()
         for clause in file:
             clause = clause.decode('ascii')
             clause = [int(i) for i in clause[:-1].split(' ')] # On enlève l'espace + le 0
             instance.add_clause(clause) # On enlève le \n
         file.close()
+        t = time.time() - a
+        print("Loaded in {:.2f} seconds!".format(t))
+
+        print("\nSolving...")
+        a = time.time()
+        solvable = instance.solve()
+        t = time.time() - a
+        print("Solved in {:.2f} seconds!".format(t))
+
         threading.Thread(target=os.remove, args=[self.name]).start() # Supression dans un thread différent
-        if instance.solve():
+
+        if solvable:
             return instance.get_model()
-        return None # Sinon pas obligatoire car le if retourne
+        return None # "Sinon" pas obligatoire car le if retourne
 
 
 if __name__ == "__main__": # DEBUG !

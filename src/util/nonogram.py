@@ -64,7 +64,7 @@ class Nonogram:
                  name="", colors=False, formula=None): # O(1)
         """ INITIALISATION
         Paramètres:
-            - size: Taile du nonogramme
+            - x,y: Taile du nonogramme
             - name: Nom du nonogramme
             - row: Informations des lignes du nonogramme
             - col: Informations des colonnes du nonogramme
@@ -111,7 +111,7 @@ class Nonogram:
 
 
 
-    def save(self, path): # O(1)
+    def save(self, path="."): # O(1)
         """ SAUVEGARDE
         Sauvegarde le nonogramme dans un dossier, nom donné automatiquement
         Paramètres:
