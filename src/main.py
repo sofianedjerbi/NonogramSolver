@@ -1,11 +1,10 @@
-""" MENU, INTERFACE UTILISATEUR CLI
-De part son explicité, ce fichier n'est pas documenté.
-"""
+""" MENU, INTERFACE UTILISATEUR CLI """
 from pysat.solvers import *
 from util.nonogram import *
 from util.graphics import *
 import time
 import os
+
 try:
     from util.scraper import Scraper
     SCRAPER=True
@@ -78,9 +77,8 @@ class Menu():
                 print(e) # On laisse requests_html gerer les erreurs
         else:
             print("Module requests-html non installé.")
-            time.sleep(1)
+            time.sleep(2)
         print("Back to the main menu...")
-        time.sleep(1)
         self.main()
 
     def nonogram(self):
@@ -91,9 +89,9 @@ class Menu():
         c = choice(len(dir))
         nonogram = Nonogram()
         nonogram.load(f"resources/nonograms/{dir[c]}")
-        self.choose_engine(nonogram)
+        self.solve(nonogram)
 
-    def choose_engine(self, nng):
+    def solve(self, nng):
         # SAT_LIST = [Glucose4, MinisatGH, Minisat22, Lingeling, Cadical]
         print("\n- CHOOSE ENGINE -")
         print("1) Glucose4")
@@ -103,23 +101,39 @@ class Menu():
         print("5) Cadical")
         c = choice(len(SAT_LIST)+1)
         engine = SAT_LIST[c]
+
+        print("\nGenerating DIMACS...")
+        a = time.time()
         nng.to_formula()
+        t = time.time() - a
+        print("DIMACS generated in {:.2f} seconds!".format(t))
+
+        print("\nSolving...")
+        a = time.time()
         vars = nng.solve(engine)
+        t = time.time() - a
+        print("Solved in {:.2f} seconds!".format(t))
+
         self.show(nng, vars)
 
     def show(self, nng, vars):
+        print("\nDraw grid ? 1 = No, 2 = Yes")
+        c = choice(2)
         graphics = Graphics("Nonogram Solver", nng.y, nng.x, "resources/icon.png")
-        graphics.draw_grid()
+        if c:
+            graphics.draw_grid()
         for x in vars:
             x = x-1 # On refais le décalage inverse du format DIMACS
             if x >= 0 and x < nng.x * nng.y: # x activé et pas une configuration
                 graphics.color_box(x%nng.y, x//nng.y)
-        while True:
+        GUI = True
+        while GUI:
+            graphics.tick()
             for event in pygame.event.get(): # Gerer les events
                 if event.type == pygame.QUIT:
                     pygame.quit()
-                    exit()
-            graphics.tick()
+                    GUI = False
+        self.main()
 
 
 

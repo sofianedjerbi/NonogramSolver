@@ -61,7 +61,7 @@ class Nonogram:
         - formula: Formule logique correspondant au booléen (FND/FNC)
     """
     def __init__(self, size=(0,0), row=[], col=[],
-                 name="", colors=False, formula=NNGFormula()): # O(1)
+                 name="", colors=False, formula=None): # O(1)
         """ INITIALISATION
         Paramètres:
             - size: Taile du nonogramme
@@ -89,28 +89,25 @@ class Nonogram:
         compteur = self.x*self.y + 1 # Pour ne pas interférer avec les cases
 
         # LIGNES
-        row = [] # Formule des lignes
         for i, c in enumerate(self.row): # i = ligne, c = coefficient
             lines = [] # Liste des configurations par ligne
             for config in convert(self.y, c): # Parcours des config
                 x = list(range(i*self.y+1, (i+1)*self.y+1)) # Numéros de la ligne
                 for v in [a*b for a,b in zip(x,config)]: # Parcours des variables
-                    row.append([-compteur, v]) # LISTE DES
+                    self.formula.append([-compteur, v]) # LISTE DES IMPLICATIONS
                 lines.append(compteur)
                 compteur += 1 # On passe a la prochaine config
-            row.append(lines)
+            self.formula.append(lines)
         # COLONNES
-        col = [] # Formule des colonnes
         for i, c in enumerate(self.col): # i = ligne, c = coefficient
             lines = [] # Liste des configurations par ligne
             for config in convert(self.x, c): # Parcours des config
                 x = [i%self.y + self.y * j + 1 for j in range(self.y)] # Numéros de la colonne
                 for v in [a*b for a,b in zip(x,config)]: # Parcours des variables
-                    col.append([-compteur, v]) # LISTE DES
+                    self.formula.append([-compteur, v]) # LISTE DES IMPLICATIONS
                 lines.append(compteur)
                 compteur += 1 # On passe a la prochaine config
-            col.append(lines)
-        self.formula = NNGFormula(row+col) # On associe les deux FNC -> ca donne des FNC
+            self.formula.append(lines)
 
 
 
