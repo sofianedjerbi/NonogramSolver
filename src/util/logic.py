@@ -9,6 +9,8 @@
  | Nous traitons uniquement des FND / FNC
 """
 import pickle
+import os
+import threading
 from itertools import product
 
 
@@ -22,32 +24,22 @@ class NNGFormula:
         Paramètres:
             - l: Liste des sous termes.
         """
-        self.list = l
+        self.name = f"TMP_{os.getpid()}.ngf"
+        self.file = open(self.name, 'wb+') # Binary pour aller plus vite
 
-    def __str__(self):
-        """ AFFICHAGE DIMACS """
-        return " 0\n".join(" ".join(str(e) for e in x) for x in self.list) + " 0"
-
-    def __add__(self, other):
-        """ COMBINE LES DEUX LISTES DE FNC/FND
-        Paramètres:
-            - other: Objet NNGFormule
-        """
-        return NNGFormula(self.list + other.list)
-
-    def linearize(self):
-        """ LINEARISATION
-        Distribue tous les termes des listes.
-        Permet une conversion FND <-> FNC.
-        """
-        self.list = list(product(*self.list))
+    #def __str__(self): # !!! DEPRECATED !!!
+    #    """ AFFICHAGE DIMACS """
+    #    return " 0\n".join(" ".join(str(e) for e in x) for x in self.file) + " 0"
 
     def append(self, l):
         """ AJOUTE DES ELEMENTS DANS LA LISTE
         Paramètres:
-            - l: Sous liste (FND/FNC)
+            - l: Sous liste (FNC)
         """
-        self.list.append(l)
+        l = [str(i) for i in l]
+        txt = " ".join(l) + "\n"
+        txt = txt.encode('ascii')
+        self.file.write(txt)
 
     def solve(self, engine):
         """ RESOUDRE UNE FORMULE
@@ -57,9 +49,15 @@ class NNGFormula:
             - None si la formule n'admet pas de modèle
             - Une liste si la formule admet un modèle
         """
+        self.file.close() # On ferme le fichier
+        file = open(self.name, "rb") # On l'ouvre en mode lecture
         instance = engine() # Une instance de l'engine pour pas le modifier
-        for clause in self.list:
-            instance.add_clause(clause)
+        for clause in file:
+            clause = clause.decode('ascii')
+            clause = [int(i) for i in clause[:-1].split(' ')] # On enlève l'espace + le 0
+            instance.add_clause(clause) # On enlève le \n
+        file.close()
+        threading.Thread(target=os.remove, args=[self.name]).start() # Supression dans un thread différent
         if instance.solve():
             return instance.get_model()
         return None # Sinon pas obligatoire car le if retourne
