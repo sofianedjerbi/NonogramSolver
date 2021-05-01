@@ -53,6 +53,7 @@ class NNGFormula:
         self.file.close() # On ferme le fichier
         file = open(self.name, "rb") # On l'ouvre en mode lecture
         instance = engine() # Une instance de l'engine pour pas le modifier
+        
         print("\nLoading DIMACS...")
         a = time.time()
         for clause in file:
