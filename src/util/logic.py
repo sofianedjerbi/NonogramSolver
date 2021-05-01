@@ -7,11 +7,19 @@
  |
  | /!\ Cette implémentation n'est pas une implémentation complète de la logique
  | Nous traitons uniquement des FND / FNC
+ |
+ | Le format de données choisi est le "ODIMACS", notre version "Optimisée" du
+ | format DIMACS:
+ |
+ | - Données stockées en "wb" ascii
+ | - Retour "\n" au lieu de "0\n"
+ | - Pas de ligne de "présentation" (p cnf ..), par cohérence
 """
 import pickle
 import os
 import time
 import threading
+
 from itertools import product
 
 
@@ -25,7 +33,7 @@ class NNGFormula:
         Paramètres:
             - l: Liste des sous termes.
         """
-        self.name = f"TMP_{os.getpid()}.ngf"
+        self.name = f"tmp_{os.getpid()}.odimacs"
         self.file = open(self.name, 'wb+') # Binary pour aller plus vite
 
     #def __str__(self): # !!! DEPRECATED !!!
@@ -39,7 +47,7 @@ class NNGFormula:
         """
         l = [str(i) for i in l]
         txt = " ".join(l) + "\n"
-        txt = txt.encode('ascii')
+        txt = txt.encode('utf-8')
         self.file.write(txt)
 
     def solve(self, engine):
@@ -51,15 +59,13 @@ class NNGFormula:
             - Une liste si la formule admet un modèle
         """
         self.file.close() # On ferme le fichier
-        file = open(self.name, "rb") # On l'ouvre en mode lecture
+        file = open(self.name, "r") # On l'ouvre en mode lecture
         instance = engine() # Une instance de l'engine pour pas le modifier
-        
-        print("\nLoading DIMACS...")
+
+        print("\nLoading ODIMACS...")
         a = time.time()
         for clause in file:
-            clause = clause.decode('ascii')
-            clause = [int(i) for i in clause[:-1].split(' ')] # On enlève l'espace + le 0
-            instance.add_clause(clause) # On enlève le \n
+            instance.add_clause([int(i) for i in clause[:-1].split(' ')]) # On enlève le \n
         file.close()
         t = time.time() - a
         print("Loaded in {:.2f} seconds!".format(t))

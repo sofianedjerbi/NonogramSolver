@@ -102,11 +102,11 @@ class Menu():
         c = choice(len(SAT_LIST)+1)
         engine = SAT_LIST[c]
 
-        print("\nGenerating DIMACS...")
+        print("\nGenerating ODIMACS...")
         a = time.time()
         nng.to_formula()
         t = time.time() - a
-        print("DIMACS generated in {:.2f} seconds!".format(t))
+        print("ODIMACS generated in {:.2f} seconds!".format(t))
 
         vars = nng.solve(engine)
         self.show(nng, vars)
