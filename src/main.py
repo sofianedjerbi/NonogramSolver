@@ -1,3 +1,4 @@
+# main.py - Sofiane DJERBI & Salem HAFTARI
 """ MENU, INTERFACE UTILISATEUR CLI """
 from pysat.solvers import *
 from util.nonogram import *

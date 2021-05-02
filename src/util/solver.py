@@ -1,4 +1,4 @@
-# Solver.py - Sofiane DJERBI & Salem HAFTARI
+# solver.py - Sofiane DJERBI & Salem HAFTARI
 import threading
 import random
 import os
