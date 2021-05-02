@@ -7,18 +7,29 @@ P = 0.5
 MAX = 10000000
 
 class RandomWalk:
+    """ RANDOMWALK
+    Cet objet représente le solveur WalkSat
+    Variables:
+        - clauses: Liste des clauses
+        - variables: Dictionnaire des variables {abs(v): v}
+    """
     def __init__(self):
+        """ INITIALISATION """
         self.clauses = []
         self.variables = {}
 
     def add_clause(self, l):
-        """ AJOUTE DES ELEMENTS DANS LE FICHIER
+        """ AJOUTE UNE CLAUSE
         Paramètres:
             - l: Sous liste (FNC)
         """
         self.clauses.append(l)
 
     def solve(self):
+        """ RESOLUTION DES CLAUSES
+            (Algorithme du sujet)
+            Retourne True si un modèle est trouvé, False sinon.
+        """
         for i in range(MAX):
             for clause in self.clauses: # On parcours les clauses
                 for v in clause: # On parcours les variables
@@ -39,6 +50,9 @@ class RandomWalk:
         return False
 
     def is_model(self):
+        """ EST MODELE
+            Retourne True si les variables sont un modèle, False sinon.
+        """
         for clause in self.clauses: # Parcours des clauses
             bools = [self.variables[abs(i)] == i for i in clause] # Les valeurs des clause
             bools = sum(bools) > 0 # Si au moins une est vraie
@@ -47,6 +61,7 @@ class RandomWalk:
         return True
 
     def get_model(self):
+        """ RETOURNE LE MODELE """
         return list(self.variables.values())
 
 
