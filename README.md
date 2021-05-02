@@ -1,5 +1,9 @@
-# Nonogram-Solver
-![](https://github.com/Kugge/Nonogram-Solver/blob/master/preview.png?raw=true) | ![](https://github.com/Kugge/Nonogram-Solver/blob/master/preview2.png?raw=true)  
+# Nonogram-Solver 
+<p float="left">
+  <img src="https://github.com/Kugge/Nonogram-Solver/blob/master/preview.png?raw=true" width="100" height="100"/>
+  <img src="https://github.com/Kugge/Nonogram-Solver/blob/master/preview2.png?raw=true"/>
+</p>
+
 Projet Nonogram  
 Par Sofiane DJERBI &amp; Salem HAFTARI
 
