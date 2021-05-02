@@ -15,7 +15,6 @@ Par Sofiane DJERBI &amp; Salem HAFTARI
 ## Resources
 - Librairie graphique `pygame`.
 - Librairie de serialisation `pickle`.
-- Compilateur JIT, librairie d'optimisation `numba`
 - Librairie de requêtes html `requests-html`, facultative (1).
 ## TODO
 - ~~Faire une librairie graphique~~ Fait

@@ -1,6 +1,5 @@
 # Obligatoire, mais non installé par défaut
 pygame
-numba
 python-sat
 #requests-html # Décommenter pour utiliser scraper.py
 
