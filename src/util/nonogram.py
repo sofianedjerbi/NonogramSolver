@@ -33,7 +33,7 @@ def convert(n, c): # O(n^3) + O(t) avec n le nombre de coef par ligne et O(t) la
         - n: Taille de la ligne/colonne
         - c: Les coefficients
     Retourne:
-        - Une liste comprise dans le produit carthésien {1, -1}^n
+        - Une liste comprise dans le produit cartésien {1, -1}^n
     """
     c = [i for i in c if i != 0] # On enleve les 0
     if len(c) == 0: # Si aucun coef, tout est rogné
