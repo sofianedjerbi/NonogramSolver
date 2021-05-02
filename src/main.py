@@ -16,8 +16,6 @@ except Exception:
 
 # ENVIRONMENT
 SAT_LIST = [Glucose4, MinisatGH, Minisat22, Lingeling, Cadical, RandomWalk]
-DEFAULT_SAT = 0 # Glucose4, index dans la liste
-# Nom de l'objet: <instance>.__name__
 # FIN_ENVIRONMENT
 
 LOGO = """
@@ -130,7 +128,6 @@ class Menu():
 
 
 if __name__ == "__main__": # Programme principal
-    sat = DEFAULT_SAT
     print(LOGO) # Logo
     menu = Menu()
     menu.main()
