@@ -1,4 +1,7 @@
 # Logic.py - Sofiane DJERBI & Salem HAFTARI
+# DEPRECATED
+# FICHIER INUTILE !
+# DEPRECATED
 """ CONVENTIONS
  | Notations :
  | a + b + (-cd) := NNGFormula([[1], [2], [-3, 4]])
@@ -12,12 +15,13 @@
  | format DIMACS:
  |
  | - Données stockées en "wb" ascii
- | - Retour "\n" au lieu de "0\n"
- | - Pas de ligne de "présentation" (p cnf ..), par cohérence
+ | - Retour "\n" au lieu de " 0\n"
+ | - Pas de ligne de "présentation" (p cnf ..) (Pour éviter le parcours)
 """
 import pickle
 import os
 import time
+import numba
 import threading
 
 from itertools import product
@@ -33,8 +37,7 @@ class NNGFormula:
         Paramètres:
             - l: Liste des sous termes.
         """
-        self.name = f"tmp_{os.getpid()}.odimacs"
-        self.file = open(self.name, 'wb+') # Binary pour aller plus vite
+        self.clauses = []
 
     #def __str__(self): # !!! DEPRECATED !!!
     #    """ AFFICHAGE DIMACS """
@@ -45,10 +48,7 @@ class NNGFormula:
         Paramètres:
             - l: Sous liste (FNC)
         """
-        l = [str(i) for i in l]
-        txt = " ".join(l) + "\n"
-        txt = txt.encode('utf-8')
-        self.file.write(txt)
+        self.clauses.append(l)
 
     def solve(self, engine):
         """ RESOUDRE UNE FORMULE
@@ -58,8 +58,6 @@ class NNGFormula:
             - None si la formule n'admet pas de modèle
             - Une liste si la formule admet un modèle
         """
-        self.file.close() # On ferme le fichier
-        file = open(self.name, "r") # On l'ouvre en mode lecture
         instance = engine() # Une instance de l'engine pour pas le modifier
 
         print("\nLoading ODIMACS...")
