@@ -22,7 +22,7 @@ class Scraper:
         Convertis un nonogramme de nonograms.org en objet Nonogram
         Variables:
             - url: Url du nonogram sur nonograms.org
-            - colors: Récuperer les couleurs ? (bool)
+            - colors: Récuperer les couleurs ? (bool) // PAS IMPLEMENTE !
         Retourne:
             - Un objet Nonogram
         """
@@ -51,7 +51,7 @@ class Scraper:
         row = [0 if e == '\xa0' else int(e) for e in row]
         row = [row[i:i+len(row)//y] for i in range(0, len(row), len(row)//y)] # Split les lignes
         print(f"Nonogram {name} sucessfully scrapped.")
-        return Nonogram(size, row, col, name, colors)
+        return Nonogram(size, row, col, name)
 
 
 if __name__ == "__main__": # Debug !
