@@ -76,7 +76,7 @@ class Nonogram:
         return f"Size: {self.y}x{self.x}, row:{self.row}, col:{self.col}"
 
     def solve(self, engine):
-        """ CONVERTIS LE NONOGRAMME EN FORMULE """
+        """ CONVERTIS LE NONOGRAMME EN FORMULE ET LE RESOUD AVEC UN SOLVEUR """
         instance = engine() # Formule principale
         compteur = self.x*self.y + 1 # Pour ne pas interférer avec les cases
         print("\nLoading CNF...")
