@@ -2,6 +2,7 @@
 from pysat.solvers import *
 from util.nonogram import *
 from util.graphics import *
+from util.solver import *
 import time
 import os
 
@@ -13,7 +14,7 @@ except Exception:
 
 
 # ENVIRONMENT
-SAT_LIST = [Glucose4, MinisatGH, Minisat22, Lingeling, Cadical]
+SAT_LIST = [Glucose4, MinisatGH, Minisat22, Lingeling, Cadical, RandomWalk]
 DEFAULT_SAT = 0 # Glucose4, index dans la liste
 # Nom de l'objet: <instance>.__name__
 # FIN_ENVIRONMENT
@@ -99,14 +100,9 @@ class Menu():
         print("3) Minisat 2.2")
         print("4) Lingeling")
         print("5) Cadical")
+        print("6) Random Walk (/!\ Not Recommended)")
         c = choice(len(SAT_LIST)+1)
         engine = SAT_LIST[c]
-
-        print("\nGenerating ODIMACS...")
-        a = time.time()
-        nng.to_formula()
-        t = time.time() - a
-        print("ODIMACS generated in {:.2f} seconds!".format(t))
 
         vars = nng.solve(engine)
         self.show(nng, vars)
