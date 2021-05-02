@@ -1,7 +1,7 @@
 # Nonogram-Solver
 <p float="center" align="center">
-  <img src="https://github.com/Kugge/Nonogram-Solver/blob/master/preview.png?raw=true" width="250" height="250"/>
-  <img src="https://github.com/Kugge/Nonogram-Solver/blob/master/preview2.png?raw=true" width="250" height="250"/>
+  <img src="https://github.com/Kugge/Nonogram-Solver/blob/master/imgs/preview.png?raw=true" width="250" height="250"/>
+  <img src="https://github.com/Kugge/Nonogram-Solver/blob/master/imgs/preview2.png?raw=true" width="250" height="250"/>
 </p>
 
 Projet Nonogram  
