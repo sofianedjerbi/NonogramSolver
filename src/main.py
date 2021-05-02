@@ -99,7 +99,7 @@ class Menu():
         print("3) Minisat 2.2")
         print("4) Lingeling")
         print("5) Cadical")
-        print("6) Random Walk (/!\ Not Recommended)")
+        print("6) WalkSAT (/!\ Not Recommended)")
         c = choice(len(SAT_LIST)+1)
         engine = SAT_LIST[c]
 
