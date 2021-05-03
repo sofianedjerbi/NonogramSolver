@@ -8,12 +8,9 @@ Projet Nonogram
 Par Sofiane DJERBI &amp; Salem HAFTARI
 ## Lancer le programme
 Programme non compatible avec python2.  
-Installation des dépendances avec pip:  
-`pip install -r requirements.txt`  
-Lancement du programme:  
-`python src/main.py`  
-Pour utiliser le scrapper:
-`pip install requests-html`  
+Installation des dépendances avec pip: `pip install -r requirements.txt`  
+Lancement du programme: `python src/main.py`  
+Pour utiliser le scrapper: `pip install requests-html`  
 (il est parfois nécéssaire de lancer le programme deux fois afin d'installer le chrome driver)
 
 ## Conventions
