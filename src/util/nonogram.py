@@ -150,3 +150,12 @@ class Nonogram:
         self.row = d["row"]
         self.col = d["col"]
         print(f"NNG {self.name} sucessfully loaded.")
+
+
+if __name__ == '__main__':
+    for i in range(10):
+        print(len(list(_convert(i, [1,1]))))
+    for i in range(15):
+        print(len(list(_convert(i, [1,1,1]))))
+    for i in range(15):
+        print(len(list(_convert(i, [1,1,1,1]))))
