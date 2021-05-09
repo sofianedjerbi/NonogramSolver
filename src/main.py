@@ -89,6 +89,7 @@ class Menu():
         c = choice(len(dir))
         nonogram = Nonogram()
         nonogram.load(f"resources/nonograms/{dir[c]}")
+        nonogram.print_complexity()
         self.solve(nonogram)
 
     def solve(self, nng):
@@ -102,7 +103,6 @@ class Menu():
         print("6) WalkSAT (/!\ Not Recommended)")
         c = choice(len(SAT_LIST)+1)
         engine = SAT_LIST[c]
-
         vars = nng.solve(engine)
         self.show(nng, vars)
 

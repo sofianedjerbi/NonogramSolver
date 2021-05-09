@@ -4,8 +4,8 @@
  | row[x], col[y] : infos de la case en position x,y (Coordonnées matricielles)
 """
 import time
+import math
 import pickle
-
 
 def _convert(n, c, d=0, prec=[]): # O(t) avec t la taille de l'arbre construit
     """ CALCULE LES COMBINAISONS POSSIBLES PAR LIGNE
@@ -105,7 +105,6 @@ class Nonogram:
 
         t = time.time() - a
         print("Loaded in {:.2f} seconds!".format(t))
-
         print("\nSolving...")
         a = time.time()
         solvable = instance.solve()
@@ -150,6 +149,29 @@ class Nonogram:
         self.row = d["row"]
         self.col = d["col"]
         print(f"NNG {self.name} sucessfully loaded.")
+
+    def print_complexity(self):
+        s = 0 # Somme
+        c = 0 # Clauses
+        m = 0 # Max
+        print("\nComputing complexity...")
+        l = max(self.x, self.y) # Plus grande colonne/ligne
+        for i in self.row:
+            i = [x for x in i if x != 0]
+            n = self.y - sum(i) - len(i) + 1
+            a = math.comb(len(i) + n, len(i))
+            s += a # Nombre de configurations
+            c += a*self.y + 1 # Nombre de clauses associées à chaque conf
+
+        for i in self.col:
+            i = [x for x in i if x != 0]
+            n = self.x - sum(i) - len(i) + 1
+            a = math.comb(len(i) + n, len(i))
+            s += a # Nombre de configurations
+            c += a*self.x + 1 # Nombre de clauses associées à chaque conf
+
+        mbs = int(c*5/8)//1000000 # On admet que 1 clause = 5 octet
+        print(f"Configs: {s}\nClauses: {c}\nMBs approximation: {mbs}")
 
 
 if __name__ == '__main__':
