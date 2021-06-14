@@ -29,4 +29,4 @@ Pour utiliser le scrapper: `pip install requests-html`
 - ~~Implémenter un solveur SAT~~ Fait
 - ~~Implémenter NOTRE solveur SAT~~ Fait
 ## Infos supplémentaires
-(1) : On ne va pas obliger le correcteur à installer cette librairie trop lourde pour une fonctionnalité qui n'est pas censée être dans le projet. C'est pourquoi on proposera des nonogrammes déjà "téléchargés" sous forme de fichiers. Cependant, soyez libre d'installer requests-html et le driver chromium pour utiliser notre scraper.
+(1) : On ne va pas obliger le jury à installer cette librairie trop lourde pour une fonctionnalité qui n'est pas censée être dans le projet. C'est pourquoi on proposera des nonogrammes déjà "téléchargés" sous forme de fichiers. Cependant, soyez libre d'installer requests-html et le driver chromium pour utiliser notre scraper.
